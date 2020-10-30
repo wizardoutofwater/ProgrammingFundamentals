@@ -54,13 +54,14 @@ totalAmount(40, `fair`)
 
 function splitAmount (billAmt, servLevel, numGuests){
     if (servLevel === `good`){
-        console.log((billAmt * 0.2 + billAmt) / numGuests);
+        console.log(((billAmt * 0.2 + billAmt) / numGuests).toFixed(2));
     }else if (servLevel === `fair`){
-        console.log((billAmt * 0.15 + billAmt) / numGuests);
+        console.log(((billAmt * 0.15 + billAmt) / numGuests).toFixed(2));
     }else if (servLevel === `bad`){
-        console.log((billAmt * 0.1 + billAmt) / numGuests);
+        console.log(((billAmt * 0.1 + billAmt) / numGuests).toFixed(2));
     }
 
 }
 splitAmount(100, `good`, 5)
 splitAmount(40, `fair`, 2)
+splitAmount(87, `fair`, 3)
