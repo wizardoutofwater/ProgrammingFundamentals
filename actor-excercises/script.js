@@ -21,7 +21,7 @@ const actor3 = {
 var arrayOfActors = [actor1, actor2, actor3]
 
 //Creating a function to print First + Last name of actors older than 30
-function oldActors (arrayOfActors){
+function notThatOldActors (arrayOfActors){
     if(arrayOfActors[0].age > 30){
         console.log(arrayOfActors[0].firstName + " " +  arrayOfActors[0].lastName)
     }if(arrayOfActors[1].age > 30){
@@ -33,4 +33,4 @@ function oldActors (arrayOfActors){
 }
 
 
-oldActors (arrayOfActors)
+notThatOldActors (arrayOfActors)
