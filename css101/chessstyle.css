@@ -1,0 +1,20 @@
+.chessboard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+}
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ffce9e
+}
+.row:nth-child(odd) > .cell:nth-child(even) {
+    background-color: #d18a46;
+  }
+
+  .row:nth-child(even) > .cell:nth-child(odd) {
+    background-color: #d18a46;
