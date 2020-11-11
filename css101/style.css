@@ -1,0 +1,35 @@
+body {
+    font-family: Sans-Serif;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0;
+  }
+
+  .header,
+  .footer,
+  .main,
+  .sidebar-left,
+  .sidebar-right {
+    padding: 20px;
+  }
+
+  .header,
+  .footer {
+    background-color: #83caff;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    background-color: #cb99cc;
+  }
+
+  .main {
+    background-color: #ffcccc;
+  }
