@@ -6,10 +6,17 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
+    .container {
+      /* display: flex;
+      /* justify-content: center; */
+      /* text-align: center; */
+    }
+
     #ajaxDog {
       width: 300px;
       height: 300px;
       border: 3px black solid;
+      text-align: center;
       /* align-items: center; */
     }
 
@@ -26,72 +33,57 @@
     <div id="ajaxDog">
 
     </div>
+    </br>
+    <label for="dropdown">Choose a Breed:</label>
     <select id="dropdown">
 
     </select>
+    </br>
+    </br>
     <button id="button"><span id="status">Generate</span> Doggo</button>
   </div>
   <script>
+    window.addEventListener("load", generateList);
     
-    window.addEventListener("load", generateList)
+    let dropwdown = document.getElementById('dropdown');
+    let button = document.getElementById("button");
+    let buttonText = document.getElementById("status");
+    let ajaxDog = document.getElementById("ajaxDog");
+    let breedName = '';
+
+    dropdown.addEventListener("change", function (){
+      breedName = this.value;
+      console.log(breedName);
+    });
+
+    button.addEventListener("click", generateDog2);
 
     function generateList() {
-
       axios
         .get('https://dog.ceo/api/breeds/list')
-        .then (function (response) {
+        .then(function (response) {
           // console.log(response);
           let breedList = response.data.message;
-          let dropwdown = document.getElementById('dropdown');
-          function iterate(item, index){
+          function iterate(item, index) {
             // console.log(`breed = ${item}`);
             dropdown.innerHTML += `<option value = "${item}"> ${item} </option>`
-          }
-           
+          };
           breedList.forEach(iterate);
-      
-          });
-          // console.log(html);
-        };
+        });
+    };
 
-  
-    //     .then(function (response) {
-    //         let breeds = response.data.message;
-        
-    //         // let option = document.createElement('option')
-    //         console.log("Axios: ", breeds);
-    //         console.log(Array.isArray(breeds));
-        
-          // breeds.forEach(createDropdown);
-
-          
-          // //  need a loop here to iterate through breeds and create <option>... use .this to grab data in array?
-          //   for (var i=0; i < breeds.length; i++){
-
-          //   }
-          // dropdown.innerHTML = `<option value="${response.data.message}">${response.data.message}</option>`
-            
-
-// -- generate a dog image ---
-
-            let button = document.getElementById("button");
-            let buttonText = document.getElementById("status");
-            let ajaxDog = document.getElementById("ajaxDog");
-
-            // function to randomly grab a dog img from dog.ceo API and display it when user clicks "generate doggo"
-            function generateDog() {
-              buttonText.innerHTML = "Generating";
-              axios
-                .get("https://dog.ceo/api/breeds/image/random")
-
-                .then(function (response) {
-                  // const image = document.createElement('img');
-                  // image.src = response.data.message;
-                  ajaxDog.innerHTML = `<img src="${response.data.message}" />`;
-                  buttonText.innerHTML = "Generate";
-                });
-            }
-            button.addEventListener("click", generateDog);
+    function generateDog2() {  
+      buttonText.innerHTML = "Generating";
+      axios
+        .get(`https://dog.ceo/api/breed/${breedName}/images/random`)
+        .then(function (response) {
+          // const image = document.createElement('img');
+          // image.src = response.data.message;
+          ajaxDog.innerHTML = `<img src="${response.data.message}" />`;
+          buttonText.innerHTML = "Generate";
+        });
+    }
+   
   </script>
 </body>
 
